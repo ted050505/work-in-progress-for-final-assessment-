@@ -27,10 +27,6 @@ class Rect {
     }
   }
   
-  chkColide() {
-    
-  }
-  
   update() {
     this.vel.add(this.acc);
     this.pos.add(this.vel);
