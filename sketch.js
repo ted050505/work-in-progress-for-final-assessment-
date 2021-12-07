@@ -2,8 +2,12 @@ let myrect = [];
 let linerect = [];
 let slider;
 
+let osc, playing, freq, amp;
+
 function setup() {
   createCanvas(500, 700);
+  
+  osc = new p5.Oscillator('sine');
   
   for(let i=0; i<10; i++) {
     myrect[i] = new Rect(random(width), height/2, 50);
@@ -17,6 +21,7 @@ function setup() {
 
 function draw() {
   let val = map(slider.value(), 0, 1, 0.1, -0.1);
+  let freq = map(slider.value(), 0, 1, 100, 400);
   
   background(220);
   
@@ -37,4 +42,28 @@ function draw() {
     linerect[i].update();
     linerect[i].display();
   }
+  
+  if(freq < 201) {
+    playOscillator();
+    osc.amp(0.1, 0.1);
+  }
+  
+  if (playing) {
+    osc.freq(freq, 0.1);
+    osc.amp(amp, 0.1);
+  }
+  
+  print(freq);
+}
+
+
+
+function playOscillator() {
+  osc.start();
+  playing = true;
+}
+
+function mouseReleased() {
+  osc.amp(0, 0.5);
+  playing = false;
 }
