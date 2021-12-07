@@ -4,10 +4,13 @@ class Rect {
     this.vel = createVector(0,0);
     this.acc = createVector(0,0);
     this.w = w;
+    
+    this.mass = random(0.8,1.5);
   }
   
-  applyForce(Force) {
-    this.acc.add(Force);
+  applyForce(force) {
+    force.div(this.mass);
+    this.acc.add(force);
   }
   
   chkEdge() {
@@ -22,6 +25,10 @@ class Rect {
       // this.vel.set(0,0);
       this.pos.y = 0;
     }
+  }
+  
+  chkColide() {
+    
   }
   
   update() {

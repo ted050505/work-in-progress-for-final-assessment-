@@ -1,9 +1,11 @@
-let myrect;
+let myrect = [];
 let slider;
 
 function setup() {
   createCanvas(600, 600);
-  myrect = new Rect(width/2, height/2, 70);
+  for(let i=0; i<10; i++) {
+    myrect[i] = new Rect(random(width), height/2, 50);
+  }
   slider = createSlider(0, 1, 0, 0);
   slider.position(10, 10);
 }
@@ -14,11 +16,12 @@ function draw() {
   background(220);
   
   let gravity = createVector(0, val);
-  myrect.applyForce(gravity);
   
-  myrect.chkEdge();
-  myrect.update();
-  myrect.display();
+  for(let i=0; i<10; i++) {
+    myrect[i].applyForce(gravity);
   
-  print(myrect.vel.y);
+    myrect[i].chkEdge();
+    myrect[i].update();
+    myrect[i].display();
+  }
 }
