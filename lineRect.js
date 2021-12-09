@@ -1,5 +1,5 @@
 class lineRect {
-  constructor(posX, posY, w, random) {
+  constructor(posX, posY, w) {
     this.pos = createVector(posX, posY);
     this.vel = createVector(0,0);
     this.acc = createVector(0,0);
@@ -8,7 +8,7 @@ class lineRect {
     this.mass = random(0.8,1.5);
 
     // let this_pos_y = this.pos.y + ran;
-    let ran = random;
+    // let ran = random;
   }
 
   applyForce(force) {
@@ -41,7 +41,7 @@ class lineRect {
   }
 
   display() {
-    line(this.pos.x + this.w/2, this.pos.y + ran, this.pos.x + this.w/2, height);
-    rect(this.pos.x, this.pos.y + ran, this.w, this.w);
+    line(this.pos.x + this.w/2, this.pos.y, this.pos.x + this.w/2, height);
+    rect(this.pos.x, this.pos.y, this.w, this.w);
   }
 }
