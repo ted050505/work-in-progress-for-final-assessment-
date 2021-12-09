@@ -1,11 +1,13 @@
 class lineRect {
-  constructor(posX, posY, w) {
+  constructor(posX, posY, w, ran) {
     this.pos = createVector(posX, posY);
     this.vel = createVector(0,0);
     this.acc = createVector(0,0);
     this.w = w;
 
     this.mass = random(0.8,1.5);
+
+    var this_pos_y = this.pos.y + ran;
   }
 
   applyForce(force) {
@@ -26,9 +28,10 @@ class lineRect {
     }
   }
 
-  set(ran) {
-    let this_pos_y = (this.pos.y + ran);
-  }
+  // set(ran) {
+  //   var this_pos_y = (this.pos.y + ran);
+  //   var this_pos_y_2 = this_pos_y;
+  // }
 
   update() {
     this.vel.add(this.acc);
