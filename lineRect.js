@@ -7,7 +7,7 @@ class lineRect {
 
     this.mass = random(0.8,1.5);
 
-    var this_pos_y = this.pos.y + ran;
+    let this_pos_y = this.pos.y + ran;
   }
 
   applyForce(force) {
@@ -30,7 +30,6 @@ class lineRect {
 
   // set(ran) {
   //   var this_pos_y = (this.pos.y + ran);
-  //   var this_pos_y_2 = this_pos_y;
   // }
 
   update() {
