@@ -5,7 +5,7 @@ let slider;
 let osc, playing, freq, amp;
 
 function setup() {
-  createCanvas(500, 700);
+  createCanvas(1280, 780);
 
   osc = new p5.Oscillator('sine');
 
@@ -17,6 +17,8 @@ function setup() {
   }
   slider = createSlider(0, 1, 0, 0);
   slider.position(10, 10);
+
+  colorMode(HSB,50,50,20);
 }
 
 function draw() {
