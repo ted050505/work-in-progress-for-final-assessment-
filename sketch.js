@@ -13,7 +13,7 @@ function setup() {
     myrect[i] = new Rect(random(width), height/2, 50);
   }
   for(let i=0; i<3; i++) {
-    linerect[i] = new lineRect(random(width), height/2, 50, random(5,10));
+    linerect[i] = new lineRect(random(width), height/2, 50);
   }
   slider = createSlider(0, 1, 0, 0);
   slider.position(10, 10);
@@ -23,7 +23,7 @@ function draw() {
   let val = map(slider.value(), 0, 1, 0.1, -0.1);
   let freq = map(slider.value(), 0, 1, 100, 400);
 
-  background(220);
+  background(100);
 
   let gravity = createVector(0, val);
 
