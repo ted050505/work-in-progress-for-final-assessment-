@@ -19,7 +19,6 @@ class lineRect {
   chkEdge() {
     if(this.pos.y >= height - this.w) {
       this.vel.y *= -1/2;
-      // this.vel.set(0,0);
       this.pos.y = height - this.w;
     }
 
@@ -29,14 +28,9 @@ class lineRect {
     }
   }
 
-  // set(ran) {
-  //   var this_pos_y = (this.pos.y + ran);
-  // }
-
   update() {
     this.vel.add(this.acc);
     this.pos.add(this.vel);
-
     this.acc.set(0, 0);
   }
 

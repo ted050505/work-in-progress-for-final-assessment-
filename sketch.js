@@ -17,7 +17,6 @@ function setup() {
   }
   slider = createSlider(0, 1, 0, 0);
   slider.position(10, 10);
-
   colorMode(HSB,50,50,20);
 }
 
@@ -50,25 +49,21 @@ function draw() {
 
   if(freq < 201) {
     playOscillator();
-    osc.amp(0.1, 0.1);
   }
 
-  if (playing) {
-    osc.freq(freq, 0.1);
-    osc.amp(amp, 0.1);
+  if(playing) {
+    osc.freq(freq, 0.3);
+    osc.amp(100, 0.1);
+  }else if(playing == false){
+    osc.amp(0, 0);
   }
-
-  print(freq);
 }
-
-
 
 function playOscillator() {
   osc.start();
   playing = true;
 }
-
 function mouseReleased() {
-  osc.amp(0, 0.5);
+  osc.stop();
   playing = false;
 }
