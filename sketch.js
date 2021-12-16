@@ -23,11 +23,11 @@ function setup() {
 }
 
 function draw() {
+  background(150);
+  
   // 슬라이더 값 받기.
   let val = map(slider.value(), 0, 1, 0.1, -0.1);
   let freq = map(slider.value(), 0, 1, 200, 500);
-
-  background(150);
 
   let gravity = createVector(0, val);
 
@@ -46,7 +46,6 @@ function draw() {
     linerect[i].update();
     linerect[i].display();
   }
-
   chkSliderValue();
 }
 
