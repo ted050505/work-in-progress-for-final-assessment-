@@ -22,6 +22,7 @@ function setup() {
 }
 
 function draw() {
+  // 슬라이더 값 받기.
   let val = map(slider.value(), 0, 1, 0.1, -0.1);
   let freq = map(slider.value(), 0, 1, 100, 400);
 
@@ -29,6 +30,7 @@ function draw() {
 
   let gravity = createVector(0, val);
 
+  // 상자들 제어.
   for(let i=0; i<10; i++) {
     myrect[i].applyForce(gravity);
 
@@ -37,6 +39,7 @@ function draw() {
     myrect[i].display();
   }
 
+  // 줄에 묶인 상자들 제어.
   for(let i=0; i<3; i++) {
     linerect[i].applyForce(gravity);
 
