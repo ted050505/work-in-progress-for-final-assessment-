@@ -10,7 +10,7 @@ function setup() {
   for(let i=0; i<10; i++) {
     myrect[i] = new Rect(random(width), height/2, 50);
   }
-  for(let i=0; i<3; i++) {
+  for(let i=0; i<7; i++) {
     linerect[i] = new lineRect(random(width), height/2, 50);
   }
 
@@ -24,7 +24,7 @@ function setup() {
 
 function draw() {
   background(150);
-  
+
   // 슬라이더 값 받기.
   let val = map(slider.value(), 0, 1, 0.1, -0.1);
   let freq = map(slider.value(), 0, 1, 200, 500);
@@ -40,7 +40,7 @@ function draw() {
   }
 
   // 줄에 묶인 상자들 제어.
-  for(let i=0; i<3; i++) {
+  for(let i=0; i<7; i++) {
     linerect[i].applyForce(gravity);
     linerect[i].chkEdge();
     linerect[i].update();
@@ -66,6 +66,6 @@ function chkSliderValue() {
     osc.freq(freq, 0.1);
     osc.amp(1, 0.1);
   }else if(playing == false){
-    osc.amp(0, 0);
+    osc.amp(0, 0.1);
   }
 }
