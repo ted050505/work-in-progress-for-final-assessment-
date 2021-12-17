@@ -17,7 +17,8 @@ function setup() {
   osc = new p5.Oscillator('sine');
 
   slider = createSlider(0, 1, 0, 0);
-  slider.position(10, 10);
+  slider.position((width/2)-100, (height+30));
+  slider.size(300);
 
   // colorMode(HSB,50,50,20);
 }
