@@ -8,10 +8,10 @@ function setup() {
   createCanvas(1280, 780);
 
   for(let i=0; i<10; i++) {
-    myrect[i] = new Rect(random(width), height/2, 50);
+    myrect[i] = new Rect(random(width), height, 50);
   }
   for(let i=0; i<7; i++) {
-    linerect[i] = new lineRect(random(width), height/2, 50);
+    linerect[i] = new lineRect(random(width), height, 50);
   }
 
   osc = new p5.Oscillator('sine');
