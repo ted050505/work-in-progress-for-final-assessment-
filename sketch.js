@@ -2,7 +2,7 @@ let myrect = [];
 let linerect = [];
 let slider;
 
-let osc, playing, freq, amp;
+let osc, playing, freq, amp, spaceVal;
 
 function setup() {
   createCanvas(1280, 780);
@@ -17,6 +17,7 @@ function setup() {
   osc = new p5.Oscillator('sine');
 
   slider = createSlider(0, 1, 0, 0);
+  slider.center();
   slider.position((width/2)-100, (height+30));
   slider.size(300);
 
@@ -29,6 +30,12 @@ function draw() {
   // 슬라이더 값 받기.
   let val = map(slider.value(), 0, 1, 0.1, -0.1);
   let freq = map(slider.value(), 0, 1, 200, 500);
+
+  if(keyIsPressed == true) {
+      spaceVal++;
+  }else{
+      spaceVal--;
+  }
 
   let gravity = createVector(0, val);
 
