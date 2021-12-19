@@ -17,7 +17,7 @@ function setup() {
 
   osc = new p5.Oscillator('sine');
 
-  slider = createSlider(0, 1, 0, 0);
+  slider = createSlider(0, 1, 0, 0.1);
   slider.center();
   slider.position((width/2)-100, (height+30));
   slider.size(300);
@@ -32,21 +32,9 @@ function draw() {
   let val = map(slider.value(), 0, 1, 0.1, -0.1);
   let freq = map(slider.value(), 0, 1, 200, 500);
 
-  if(keyIsPressed == true) {
-      spaceVal += 0.1;
-  }else{
-      spaceVal -= 0.1;
-  }
+  inputSpacebarChk();
   slider.value(spaceVal);
-
-  if(spaceVal <= 0) {
-    spaceVal = 0;
-    spaceVal += 0.1;
-  }
-  if(spaceVal >= 1) {
-    spaceVal = 1;
-    spaceVal -= 0.1;
-  }
+  speedValUpdate();
 
   let gravity = createVector(0, val);
 
@@ -65,7 +53,7 @@ function draw() {
     linerect[i].update();
     linerect[i].display();
   }
-  chkSliderValue();
+  chkSliderValue_OSC();
 }
 
 function playOscillator() {
@@ -77,7 +65,7 @@ function mouseReleased() {
   playing = false;
 }
 
-function chkSliderValue() {
+function chkSliderValue_OSC() {
   if(freq < 200) {
     playOscillator();
   }
@@ -86,5 +74,24 @@ function chkSliderValue() {
     osc.amp(1, 0.1);
   }else if(playing == false){
     osc.amp(0, 0.1);
+  }
+}
+
+function inputSpacebarChk() {
+  if(keyIsPressed == true && keyCode == '32') {
+      spaceVal += 0.1;
+  }else{
+      spaceVal -= 0.1;
+  }
+}
+
+function speedValUpdate() {
+  if(spaceVal <= 0) {
+    spaceVal = 0;
+    spaceVal += 0.1;
+  }
+  if(spaceVal >= 1) {
+    spaceVal = 1;
+    spaceVal -= 0.1;
   }
 }
