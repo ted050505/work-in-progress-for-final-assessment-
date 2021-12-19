@@ -2,7 +2,8 @@ let myrect = [];
 let linerect = [];
 let slider;
 
-let osc, playing, freq, amp, spaceVal;
+let osc, playing, freq, amp;
+let spaceVal = 0;
 
 function setup() {
   createCanvas(1280, 780);
@@ -32,9 +33,19 @@ function draw() {
   let freq = map(slider.value(), 0, 1, 200, 500);
 
   if(keyIsPressed == true) {
-      spaceVal++;
+      spaceVal += 0.1;
   }else{
-      spaceVal--;
+      spaceVal -= 0.1;
+  }
+  slider.value(spaceVal);
+
+  if(spaceVal <= 0) {
+    spaceVal = 0;
+    spaceVal += 0.1;
+  }
+  if(spaceVal >= 1) {
+    spaceVal = 1;
+    spaceVal -= 0.1;
   }
 
   let gravity = createVector(0, val);
