@@ -9,7 +9,7 @@ let inputtoggle = false;
 function setup() {
   createCanvas(1280, 780);
 
-  osc = new p5.Oscillator('sine');
+
 
   for(let i=0; i<10; i++) {
     myrect[i] = new Rect(random(width), height, 50);
@@ -59,29 +59,6 @@ function draw() {
     linerect[i].display();
   }
   chkSliderValue_OSC();
-}
-
-function playOscillator() {
-  osc.start();
-  playing = true;
-}
-function mouseReleased() {
-  osc.stop();
-  playing = false;
-}
-
-function chkSliderValue_OSC() {
-  if(freq < 300) {
-    playOscillator();
-    osc.amp(0.1, 0.1);
-  }
-  if(playing) {
-    osc.freq(freq, 0.1);
-    osc.amp(amp, 0.1);
-  }
-  // }else if(playing == false){
-  //   osc.amp(amp, 0.5);
-  // }
 }
 
 function inputSpacebarChk() {
