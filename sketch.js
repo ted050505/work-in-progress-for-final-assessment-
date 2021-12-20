@@ -31,16 +31,13 @@ function setup() {
   slider.size(300);
 
   soundFile.loop();
-  soundFile.play();
 
   filter = new p5.LowPass();
 
   soundFile.disconnect();
   soundFile.connect(filter);
 
-  soundFile.setVolume(1.0);
-
-  // colorMode(HSB,50,50,20);
+  soundFile.setVolume(0.1);
 }
 
 function draw() {
@@ -50,9 +47,8 @@ function draw() {
   let val = map(slider.value(), 0, 1, 0.1, -0.1);
   let freq = map(slider.value(), 0, 1, 200, 500);
 
-  freq = constrain(freq, 200, 500);
   filter.freq(freq);
-  filter.res(30);
+  filter.res(10);
 
   inputSpacebarChk();
 
