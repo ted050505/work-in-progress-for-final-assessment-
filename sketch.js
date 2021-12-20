@@ -44,8 +44,6 @@ function setup() {
 function draw() {
   background(150);
 
-  // soundFile.setVolume(0.5, 0.1);
-
   // 슬라이더 값 받기.
   let val = map(slider.value(), 0, 1, 0.1, -0.1);
   let freq = map(slider.value(), 0, 1, 200, 500);
@@ -79,7 +77,7 @@ function draw() {
     linerect[i].update();
     linerect[i].display();
   }
-  chkSliderValue_OSC();
+  // chkSliderValue_OSC();
 }
 
 function playOscillator() {
