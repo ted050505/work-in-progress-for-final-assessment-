@@ -4,6 +4,7 @@ let slider;
 
 let osc, playing, freq, amp;
 let spaceVal = 0;
+let inputtoggle = false;
 
 function setup() {
   createCanvas(1280, 780);
@@ -33,7 +34,11 @@ function draw() {
   let freq = map(slider.value(), 0, 1, 200, 500);
 
   inputSpacebarChk();
-  slider.value(spaceVal);
+  if(inputtoggle) {
+    slider.value(spaceVal);
+  }else if(!inputtoggle) {
+    slider.value();
+  }
   speedValUpdate();
 
   let gravity = createVector(0, val);
@@ -66,7 +71,7 @@ function mouseReleased() {
 }
 
 function chkSliderValue_OSC() {
-  if(freq < 200) {
+  if(freq < 500) {
     playOscillator();
   }
   if(playing) {
@@ -79,9 +84,15 @@ function chkSliderValue_OSC() {
 
 function inputSpacebarChk() {
   if(keyIsPressed == true && keyCode == '32') {
+      inputtoggle = true;
       spaceVal += 0.1;
   }else{
+      inputtoggle = false;
       spaceVal -= 0.1;
+      for(let i=spaceVal; i>0; i--) {
+        slider.value(spaceVal);
+        spaceVal -= 0.1;
+      }
   }
 }
 
