@@ -9,14 +9,14 @@ let inputtoggle = false;
 function setup() {
   createCanvas(1280, 780);
 
+  osc = new p5.Oscillator('sine');
+
   for(let i=0; i<10; i++) {
     myrect[i] = new Rect(random(width), height, 50);
   }
   for(let i=0; i<7; i++) {
     linerect[i] = new lineRect(random(width), height, 50);
   }
-
-  osc = new p5.Oscillator('sine');
 
   slider = createSlider(0, 1, 0, 0.01);
   slider.center();
@@ -34,13 +34,11 @@ function draw() {
   let freq = map(slider.value(), 0, 1, 200, 500);
 
   inputSpacebarChk();
-
   if(inputtoggle) {
     slider.value(spaceVal);
   }else if(!inputtoggle) {
     slider.value();
   }
-
   speedValUpdate();
 
   let gravity = createVector(0, val);
@@ -73,15 +71,17 @@ function mouseReleased() {
 }
 
 function chkSliderValue_OSC() {
-  if(freq < 500) {
+  if(freq < 300) {
     playOscillator();
+    osc.amp(0.1, 0.1);
   }
   if(playing) {
     osc.freq(freq, 0.1);
-    osc.amp(1, 0.1);
-  }else if(playing == false){
-    osc.amp(0, 0.1);
+    osc.amp(amp, 0.1);
   }
+  // }else if(playing == false){
+  //   osc.amp(amp, 0.5);
+  // }
 }
 
 function inputSpacebarChk() {
