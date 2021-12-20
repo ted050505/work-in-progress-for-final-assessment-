@@ -44,13 +44,15 @@ function setup() {
 function draw() {
   background(150);
 
+  // soundFile.setVolume(0.5, 0.1);
+
   // 슬라이더 값 받기.
   let val = map(slider.value(), 0, 1, 0.1, -0.1);
   let freq = map(slider.value(), 0, 1, 200, 500);
 
   freq = constrain(freq, 200, 500);
   filter.freq(freq);
-  filter.res(150);
+  filter.res(30);
 
   inputSpacebarChk();
   if(inputtoggle) {
