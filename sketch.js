@@ -48,9 +48,9 @@ function draw() {
   let val = map(slider.value(), 0, 1, 0.1, -0.1);
   let freq = map(slider.value(), 0, 1, 200, 500);
 
-  freq = constrain(freq, 0, 22050);
+  freq = constrain(freq, 200, 500);
   filter.freq(freq);
-  filter.res(50);
+  filter.res(150);
 
   inputSpacebarChk();
   if(inputtoggle) {
