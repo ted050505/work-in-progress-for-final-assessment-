@@ -9,7 +9,7 @@ let mySound;
 
 function preload() {
   soundFormats('mp3');
-  mySound = loadSound('/JJH_Drone.mp3')
+  mySound = loadSound('sound/JJH_Drone.mp3')
 }
 
 function setup() {
@@ -28,7 +28,7 @@ function setup() {
   slider.center();
   slider.position((width/2)-100, (height+30));
   slider.size(300);
-  
+
   mySound.play();
 
   // colorMode(HSB,50,50,20);
