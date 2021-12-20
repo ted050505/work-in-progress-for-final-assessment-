@@ -18,7 +18,7 @@ function setup() {
 
   osc = new p5.Oscillator('sine');
 
-  slider = createSlider(0, 1, 0, 0.1);
+  slider = createSlider(0, 1, 0, 0.01);
   slider.center();
   slider.position((width/2)-100, (height+30));
   slider.size(300);
@@ -34,11 +34,13 @@ function draw() {
   let freq = map(slider.value(), 0, 1, 200, 500);
 
   inputSpacebarChk();
+
   if(inputtoggle) {
     slider.value(spaceVal);
   }else if(!inputtoggle) {
     slider.value();
   }
+
   speedValUpdate();
 
   let gravity = createVector(0, val);
