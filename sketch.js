@@ -27,7 +27,7 @@ function setup() {
 
   slider = createSlider(0, 1, 0, 0.01);
   slider.center();
-  slider.position((width/2)-100, (height+30));
+  slider.position((width/2)-130, (height+250));
   slider.size(300);
 
   soundFile.loop();
