@@ -5,11 +5,28 @@ let slider;
 let osc, playing, freq, amp;
 let spaceVal = 0;
 let inputtoggle = false;
+<<<<<<< HEAD
+let mySound;
+
+function preload() {
+  soundFormats('mp3');
+  mySound = loadSound('/JJH_Drone.mp3')
+}
+=======
+>>>>>>> parent of 28e0114 (add soundFile)
 
 function setup() {
   createCanvas(1280, 780);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+  osc = new p5.Oscillator('sine');
+=======
 
+>>>>>>> parent of 28e0114 (add soundFile)
+=======
+  osc = new p5.Oscillator('sine');
+>>>>>>> parent of 59b7492 (delete OSC)
 
   for(let i=0; i<10; i++) {
     myrect[i] = new Rect(random(width), height, 50);
@@ -22,6 +39,7 @@ function setup() {
   slider.center();
   slider.position((width/2)-100, (height+30));
   slider.size(300);
+  mySound.play();
 
   // colorMode(HSB,50,50,20);
 }
@@ -59,6 +77,29 @@ function draw() {
     linerect[i].display();
   }
   chkSliderValue_OSC();
+}
+
+function playOscillator() {
+  osc.start();
+  playing = true;
+}
+function mouseReleased() {
+  osc.stop();
+  playing = false;
+}
+
+function chkSliderValue_OSC() {
+  if(freq < 300) {
+    playOscillator();
+    osc.amp(0.1, 0.1);
+  }
+  if(playing) {
+    osc.freq(freq, 0.1);
+    osc.amp(amp, 0.1);
+  }
+  // }else if(playing == false){
+  //   osc.amp(amp, 0.5);
+  // }
 }
 
 function inputSpacebarChk() {
