@@ -5,11 +5,12 @@ let slider;
 let osc, playing, freq, amp;
 let spaceVal = 0;
 let inputtoggle = false;
-let mySound;
+let soundFile;
+let filter;
 
 function preload() {
   soundFormats('mp3');
-  mySound = loadSound('sound/JJH_Drone.mp3')
+  soundFile = loadSound('sound/JJH_Drone.mp3')
 }
 
 function setup() {
@@ -29,7 +30,13 @@ function setup() {
   slider.position((width/2)-100, (height+30));
   slider.size(300);
 
-  mySound.play();
+  soundFile.loop();
+  soundFile.play();
+
+  filter = new p5.LowPass();
+
+  soundFile.disconnect();
+  soundFile.connect(filter);
 
   // colorMode(HSB,50,50,20);
 }
@@ -40,6 +47,10 @@ function draw() {
   // 슬라이더 값 받기.
   let val = map(slider.value(), 0, 1, 0.1, -0.1);
   let freq = map(slider.value(), 0, 1, 200, 500);
+
+  freq = constrain(freq, 0, 22050);
+  filter.freq(freq);
+  filter.res(50);
 
   inputSpacebarChk();
   if(inputtoggle) {
@@ -87,9 +98,6 @@ function chkSliderValue_OSC() {
     osc.freq(freq, 0.1);
     osc.amp(amp, 0.1);
   }
-  // }else if(playing == false){
-  //   osc.amp(amp, 0.5);
-  // }
 }
 
 function inputSpacebarChk() {
