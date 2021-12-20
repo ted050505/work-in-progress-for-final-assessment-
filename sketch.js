@@ -14,7 +14,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(1280, 780);
+  createCanvas(1860, 650);
 
   osc = new p5.Oscillator('sine');
 
