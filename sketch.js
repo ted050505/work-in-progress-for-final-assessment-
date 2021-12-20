@@ -38,6 +38,8 @@ function setup() {
   soundFile.disconnect();
   soundFile.connect(filter);
 
+  soundFile.setVolume(1.0);
+
   // colorMode(HSB,50,50,20);
 }
 
@@ -53,11 +55,13 @@ function draw() {
   filter.res(30);
 
   inputSpacebarChk();
+
   if(inputtoggle) {
     slider.value(spaceVal);
   }else if(!inputtoggle) {
     slider.value();
   }
+
   speedValUpdate();
 
   let gravity = createVector(0, val);
